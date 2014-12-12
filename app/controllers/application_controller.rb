@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
   end
 
   def access_check
-  	whitelist = ["localhost", "social.teletech.com"]
+  	whitelist = ["localhost", "social.teletech.com", "jivedemo-teletech-gtm-alliances.jiveon.com"]
    	if !whitelist.include? request.domain
-   		respond({ error: "Domain blocked" })
+   		respond({ error: "Domain blocked", domain: request.domain })
    	end
   end
 
