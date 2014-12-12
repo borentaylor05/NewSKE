@@ -43,9 +43,6 @@ ActiveRecord::Schema.define(version: 20141212155835) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "contents", ["api_id"], name: "index_contents_on_api_id", using: :btree
-  add_index "contents", ["doc_id"], name: "index_contents_on_doc_id", using: :btree
-
   create_table "contents_specialties", id: false, force: true do |t|
     t.integer "content_id",   null: false
     t.integer "specialty_id", null: false
