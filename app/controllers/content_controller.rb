@@ -1,7 +1,6 @@
 class ContentController < ApplicationController
 	include ActionView::Helpers::SanitizeHelper
 	skip_before_action :verify_authenticity_token
-	before_action :access_check
 
 	def create
 		if(Content.find_by(api_id: params[:api_id]).blank?)
