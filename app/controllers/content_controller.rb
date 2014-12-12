@@ -73,8 +73,12 @@ class ContentController < ApplicationController
 					if !s.blank?
 						s << content
 						content << s
-						s.save
-						content.save
+						if s.valid? && c.valid?
+							s.save
+							content.save
+						else
+							respond({error: "Spec: #{s.errors.full_messages}, Content: #{content.errors.full_messages}"})
+						end
 					end
 				end
 			end
