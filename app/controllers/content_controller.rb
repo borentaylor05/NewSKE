@@ -67,14 +67,16 @@ class ContentController < ApplicationController
 	private
 
 		def check_tags(content, tags)
-			tags.each do |tag|
-				s = Specialty.find_by(name: tag.downcase)
-				# if tag has matching specialty
-				if !s.blank?
-					s << content
-					content << s
-					s.save
-					content.save
+			if !params[:tags].blank?
+				tags.each do |tag|
+					s = Specialty.find_by(name: tag.downcase)
+					# if tag has matching specialty
+					if !s.blank?
+						s << content
+						content << s
+						s.save
+						content.save
+					end
 				end
 			end
 		end
